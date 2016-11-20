@@ -1,0 +1,14 @@
+div {
+    display:flex;
+    flex-direction:row;
+}
+
+md-card {
+    margin: 10px;
+}
+
+md-card m4-static {
+    text-align: end;
+    align-self: center;
+    padding-right: 6px;
+}
