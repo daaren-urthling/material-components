@@ -1,3 +1,16 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-layout fullscreen>
+    <md-sidenav #start>
+        Left Sidenav.
+    </md-sidenav>
+
+    <md-toolbar color="primary">
+        <md-icon (click)="start.open()">menu</md-icon>
+        <span>&nbsp;Mago</span>
+    </md-toolbar>
+
+
+    <app-tile-group></app-tile-group>
+ 
+</md-sidenav-layout>
+
+
