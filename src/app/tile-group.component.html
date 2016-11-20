@@ -4,10 +4,13 @@
       <md-card-title>Master</md-card-title>
       <md-card-content style="display:flex;flex-direction:column">
         <div style="display:flex;flex-direction:row">
-          <label style="flex:30;text-align: end;align-self: center;padding-right: 6px;">Name</label>
-          <md-input style="flex:70"></md-input>          
+            <m4-static [ngStyle]="onStaticStyle()">Name</m4-static>
+            <md-input [ngStyle]="onInputStyle()"></md-input>          
         </div>
-          <md-input placeholder="Address"></md-input>
+        <div style="display:flex;flex-direction:row">
+            <m4-static [ngStyle]="onStaticStyle()">Address</m4-static>
+            <md-input [ngStyle]="onInputStyle()"></md-input>
+        </div>
           <md-input placeholder="Telephone"></md-input>
       </md-card-content>
   </md-card>

@@ -7,11 +7,13 @@ import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { TileGroupComponent } from './tile-group.component';
+import { M4StaticComponent } from './m4-static.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TileGroupComponent
+    TileGroupComponent,
+    M4StaticComponent
   ],
   imports: [
     BrowserModule,
