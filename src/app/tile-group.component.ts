@@ -1,33 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tile-group',
   templateUrl: './tile-group.component.html',
   styleUrls: ['./tile-group.component.css']
 })
-export class TileGroupComponent implements OnInit {
+export class TileGroupComponent {
 
   @Input() staticWidth : number = 30;
+  @Input() compact : boolean = false;
   fields = [
+    { caption : "Name" },
+    { caption : "Address" },
     { caption : "Telephone" }
   ]
-
-  constructor() { 
-    
-  }
-
-  ngOnInit() {
-  }
-
-
-  onStaticStyle() {
-    return   {flex : this.staticWidth};
-    // return {flex : 0};
-  }
-
-  onInputStyle() {
-    return   {flex : 100 - this.staticWidth};
-    // return {flex : 1};
-  }
 
 }

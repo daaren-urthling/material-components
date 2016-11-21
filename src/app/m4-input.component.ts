@@ -7,10 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class M4InputComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit() {
-    if (this.compact) { this.placeholder = this.caption; }
+    if (this.compact) { 
+      this.placeholder = this.caption; 
+      this.staticWidth = 0;
+    }
   }
 
   @Input() staticWidth : number = 30;
@@ -18,12 +19,8 @@ export class M4InputComponent implements OnInit {
   @Input() compact : boolean = false;
   placeholder : string;
 
-  onStaticStyle() {
-    return this.compact ?  { display : 'none' } : { flex : this.staticWidth };
-  }
-
-  onInputStyle() {
-    return this.compact ?  { flex : 100 } :  { flex : 100 - this.staticWidth };
+  getStaticStyle() {
+    return this.compact ?  { display : 'none' } : { };
   }
 
 }

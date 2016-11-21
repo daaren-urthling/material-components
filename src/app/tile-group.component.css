@@ -1,8 +1,3 @@
-div {
-    display:flex;
-    flex-direction:row;
-}
-
 md-card {
     margin: 10px;
 }

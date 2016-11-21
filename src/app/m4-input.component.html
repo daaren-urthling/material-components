@@ -1,4 +1,4 @@
-<div class="m4-input-container">
-  <label class="m4-input-caption" [ngStyle]="onStaticStyle()">{{caption}}</label>
-  <md-input [ngStyle]="onInputStyle()" placeholder="{{placeholder}}"></md-input>          
+<div m4-layout="row">
+  <label class="m4-input-caption" m4-flex="{{staticWidth}}" [ngStyle]="getStaticStyle()">{{caption}}</label>
+  <md-input m4-flex="{{100 - staticWidth}}" placeholder="{{placeholder}}"></md-input>
 </div>

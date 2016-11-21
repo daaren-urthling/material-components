@@ -1,31 +1,26 @@
 
-<div>
+<div m4-layout="row"> 
   <md-card style="flex:1">
       <md-card-title>Master</md-card-title>
-      <md-card-content style="display:flex;flex-direction:column">
-        <div style="display:flex;flex-direction:row">
-            <m4-static [ngStyle]="onStaticStyle()">Name</m4-static>
-            <md-input [ngStyle]="onInputStyle()"></md-input>          
-        </div>
-        <div style="display:flex;flex-direction:row">
-            <m4-static [ngStyle]="onStaticStyle()">Address</m4-static>
-            <md-input [ngStyle]="onInputStyle()"></md-input>
-        </div>
-        <m4-input [caption]="fields[0].caption" [staticWidth]="staticWidth" [compact]="false"></m4-input>
+      <md-card-content>
+        <m4-input [caption]="fields[0].caption" [staticWidth]="staticWidth" [compact]="compact"></m4-input>
+        <m4-input [caption]="fields[1].caption" [staticWidth]="staticWidth" [compact]="compact"></m4-input>
+        <m4-input [caption]="fields[2].caption" [staticWidth]="staticWidth" [compact]="compact"></m4-input>
       </md-card-content>
   </md-card>
 
   <md-card style="flex:1">
       <md-card-title>Sales</md-card-title>
       <md-card-content style="display:flex;flex-direction:column">
-          <md-input placeholder="Product" style="flex:1"></md-input>
-          <md-input placeholder="amount" align="end" style="flex:1">
-              <span md-prefix>$&nbsp;</span>
-              <span md-suffix>.00</span>
-          </md-input>
-          <md-input placeholder="discount" align="end" style="flex:1">
-              <span md-suffix>&nbsp;%</span>
-          </md-input>
+        <m4-input [caption]="'Product'" [staticWidth]="staticWidth" [compact]="compact"></m4-input>
+        <!--<md-input placeholder="amount" align="end" style="flex:20%">
+            <span md-prefix>$&nbsp;</span>
+            <span md-suffix>.00</span>
+        </md-input>-->
+        <m4-input [caption]="'Amount'" align="end" [staticWidth]="staticWidth" [compact]="compact"></m4-input>
+        <md-input placeholder="discount" align="end" style="flex:60%">
+            <span md-suffix>&nbsp;%</span>
+        </md-input>
       </md-card-content>
   </md-card>
 </div>
