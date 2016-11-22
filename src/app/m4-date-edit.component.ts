@@ -5,10 +5,16 @@ import { Component, OnInit, Input } from '@angular/core';
   template: `
   <div m4-layout="row">
     <label class="m4-control-caption" m4-flex="{{staticWidth}}" [hidden]="compact">{{controlCaption}}</label>
-    <div m4-flex="{{100 - staticWidth}}" m4-layout="column">
+    <!--<div m4-flex="{{100 - staticWidth}}" m4-layout="column">
       <my-date-picker  [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
       <div class="md-input-underline" > <span class="md-input-ripple"></span> </div>
-    </div>
+    </div>-->
+    <div m4-flex="{{100 - staticWidth}}" m4-layout="row">
+      <md-input placeholder="{{placeholder}}">
+          <!--<span md-suffix><md-icon class="material-icons md-14">event</md-icon></span>-->
+      </md-input>
+       <md-icon class="material-icons md-18">event</md-icon>
+      </div>
   </div>
   `,
   styles: [`
@@ -20,6 +26,15 @@ import { Component, OnInit, Input } from '@angular/core';
 
     .md-input-underline {
       position: static;
+    }
+
+    md-icon {
+      align-self : center;
+      font-size: 18px;
+    }
+
+    md-input {
+      width:150px;
     }
   `]
 })
