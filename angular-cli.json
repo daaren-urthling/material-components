@@ -18,9 +18,12 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles.css",
+        "otherComponents/pikaday.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "otherComponents/pikaday.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

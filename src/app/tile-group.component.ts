@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { M4ControlItem } from './m4-control.component';
 
 @Component({
@@ -6,18 +6,23 @@ import { M4ControlItem } from './m4-control.component';
   templateUrl: './tile-group.component.html',
   styleUrls: ['./tile-group.component.css']
 })
-export class TileGroupComponent {
+export class TileGroupComponent implements OnInit {
 
   @Input() staticWidth : number = 30;
   @Input() compact : boolean = false;
 
-  controlItems : M4ControlItem[] = [
-    { controlCaption : 'Name'},
-    { controlCaption : 'Address'},
-    { controlCaption : 'ZIP'},
-    { controlCaption : 'Telephone'},
-    { controlCaption : 'email'},
-  ]
+  controlItems : M4ControlItem[];
+  discount : M4ControlItem;
 
-  discount : M4ControlItem = { controlCaption : 'Discount'}
+  ngOnInit() {
+    this.controlItems = [
+      { controlCaption : 'Name', compact : this.compact,  staticWidth : this.staticWidth},
+      { controlCaption : 'Address', compact : this.compact,  staticWidth : this.staticWidth},
+      { controlCaption : 'ZIP', compact : this.compact,  staticWidth : this.staticWidth},
+      { controlCaption : 'Telephone', compact : this.compact,  staticWidth : this.staticWidth},
+      { controlCaption : 'email', compact : this.compact,  staticWidth : this.staticWidth},
+    ];
+
+    this.discount = { controlCaption : 'Discount', compact : this.compact,  staticWidth : this.staticWidth};
+  }
 }

@@ -3,16 +3,16 @@
   <md-card style="flex:1">
       <md-card-title>Master</md-card-title>
       <md-card-content>
-        <m4-str-edit [controlItem]="controlItems[0]" [staticWidth]="staticWidth" [compact]="compact"></m4-str-edit>
+        <m4-str-edit [controlItem]="controlItems[0]"></m4-str-edit>
         <div m4-layout="row">
-            <m4-str-edit m4-flex="70" [controlItem]="controlItems[1]" [staticWidth]="(staticWidth / 70) * 100" [compact]="compact"></m4-str-edit>
-            <m4-str-edit m4-flex="30" [controlItem]="controlItems[2]" [compact]="compact"></m4-str-edit>
+            <m4-str-edit m4-flex="70" [controlItem]="controlItems[1]" [staticWidth]="(staticWidth / 70) * 100"></m4-str-edit>
+            <m4-str-edit m4-flex="30" [controlItem]="controlItems[2]"></m4-str-edit>
         </div>
-        <m4-str-edit [controlItem]="controlItems[3]" [staticWidth]="staticWidth" [compact]="compact"></m4-str-edit>
-        <m4-str-edit [controlItem]="controlItems[4]" [staticWidth]="staticWidth" [compact]="compact"></m4-str-edit>
+        <m4-str-edit [controlItem]="controlItems[3]"></m4-str-edit>
+        <m4-str-edit [controlItem]="controlItems[4]"></m4-str-edit>
         <div m4-layout="row">
-            <m4-date-edit m4-flex="50" controlCaption="Acquired on" [staticWidth]="(staticWidth / 50) * 100" [compact]="compact"></m4-date-edit>
-            <m4-str-edit m4-flex="50" controlCaption="acquired by" [compact]="compact"></m4-str-edit>
+            <m4-date-edit m4-flex="50" controlCaption="Acquired on" [staticWidth]="(staticWidth / 50) * 100"  [compact]="compact"></m4-date-edit>
+            <m4-str-edit m4-flex="50" controlCaption="acquired by"></m4-str-edit>
         </div>
       </md-card-content>
   </md-card>
@@ -26,6 +26,7 @@
             <m4-str-edit m4-flex="30" controlCaption="VAT" [compact]="compact"></m4-str-edit>
         </div>
         <m4-perc-edit [controlItem]="discount" [staticWidth]="staticWidth" [compact]="compact"></m4-perc-edit>
+        <m4-date-edit controlCaption="Last change" [staticWidth]="staticWidth" [compact]="compact"></m4-date-edit>
       </md-card-content>
   </md-card>
 </div>
