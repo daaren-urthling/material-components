@@ -22,7 +22,8 @@
         "otherComponents/pikaday.css"
       ],
       "scripts": [
-        "otherComponents/pikaday.js"
+        "otherComponents/pikaday.js",
+        "otherComponents/hammer.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

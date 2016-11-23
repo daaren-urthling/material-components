@@ -6,10 +6,15 @@
     <md-toolbar color="primary">
         <md-icon (click)="start.open()">menu</md-icon>
         <span>&nbsp;Mago</span>
+        <div style="display:block; width:100%">
+            <md-slide-toggle [(ngModel)]="compact" style="float:right">
+                Compact forms
+            </md-slide-toggle>
+        </div>
     </md-toolbar>
 
-    <app-tile-group [staticWidth]="staticWidth"></app-tile-group>
-    <app-tile-group [staticWidth]="staticWidth" [compact]="true"></app-tile-group>
+    <app-tile-group [staticWidth]="staticWidth" [compact]="compact"></app-tile-group>
+    <app-tile-group [staticWidth]="staticWidth" [compact]="compact"></app-tile-group>
  
 </md-sidenav-layout>
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ElementRef, AfterViewChecked, ContentChild } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { TileGroupComponent } from './tile-group.component';
 
 ///////////////////////////////////////////////////////////////////////////////
 //								M4ControlItem
@@ -39,6 +40,9 @@ export class M4ControlContainerComponent implements OnInit {
   ngOnInit() {
   }
 
+  isCompact() {
+    return this.compact;
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -51,6 +55,7 @@ class M4ControlComponent {
   controlCaption : string;
   compact : boolean;
   controlItem : M4ControlItem;
+  tileGroup : TileGroupComponent;
 
   onInitControl() {
     if (!this.controlItem)
@@ -68,10 +73,22 @@ class M4ControlComponent {
        this.controlItem.compact = this.compact;
     }
 
-    if (this.controlItem.compact) { 
-      this.placeholder = this.controlItem.controlCaption; 
-      this.controlItem.staticWidth = 0;
+    if ((this.staticWidth == null || this.staticWidth == -1) && this.tileGroup != null) {
+      this.staticWidth = this.tileGroup.staticWidth;
     }
+
+    if (this.compact == null && this.tileGroup != null) {
+      this.compact = this.tileGroup.compact;
+    }
+
+    if (this.compact) { 
+      this.placeholder = this.controlItem.controlCaption; 
+      this.staticWidth = 0;
+    }
+  }
+
+  isCompact() {
+    return this.controlItem.compact;
   }
 }
 
@@ -82,8 +99,8 @@ class M4ControlComponent {
 @Component({
   selector: 'm4-str-edit',
   template: `
-    <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="controlItem.staticWidth" [compact]="controlItem.compact">
-      <md-input m4-flex="{{100 - controlItem.staticWidth}}" placeholder="{{placeholder}}"></md-input>
+    <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="staticWidth" [compact]="compact">
+      <md-input m4-flex="{{100 - staticWidth}}" placeholder="{{placeholder}}"></md-input>
     </m4-control-container>
     `,
   styles: [`
@@ -91,7 +108,7 @@ class M4ControlComponent {
       margin-right : 5px;
     }
   `],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem']
+  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem', 'tileGroup']
 })
 export class M4StrEditComponent extends M4ControlComponent implements OnInit {
 
@@ -107,8 +124,8 @@ export class M4StrEditComponent extends M4ControlComponent implements OnInit {
 @Component({
   selector: 'm4-perc-edit',
   template: `
-  <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="controlItem.staticWidth" [compact]="controlItem.compact">
-    <md-input m4-flex="{{100 - controlItem.staticWidth}}" align="end" placeholder="{{placeholder}}">
+  <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="staticWidth" [compact]="compact">
+    <md-input m4-flex="{{100 - staticWidth}}" align="end" placeholder="{{placeholder}}">
       <span md-suffix>&nbsp;%</span>
     </md-input>
   </m4-control-container>
@@ -118,7 +135,7 @@ export class M4StrEditComponent extends M4ControlComponent implements OnInit {
       margin-right : 5px;
     }
   `],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem']
+  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem','tileGroup']
 })
 export class M4PercEditComponent extends M4ControlComponent implements OnInit {
 
@@ -134,8 +151,8 @@ export class M4PercEditComponent extends M4ControlComponent implements OnInit {
 @Component({
   selector: 'm4-money-edit',
   template: `
-  <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="controlItem.staticWidth" [compact]="controlItem.compact">
-    <md-input m4-flex="{{100 - controlItem.staticWidth}}" align="end" placeholder="{{placeholder}}">
+  <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="staticWidth" [compact]="compact">
+    <md-input m4-flex="{{100 - staticWidth}}" align="end" placeholder="{{placeholder}}">
       <span md-prefix>€</span>
       <span md-suffix>.00</span>
     </md-input>
@@ -146,7 +163,7 @@ export class M4PercEditComponent extends M4ControlComponent implements OnInit {
       margin-right : 5px;
     }
   `],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem']
+  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem', 'tileGroup']
 })
 export class M4MoneyEditComponent extends M4ControlComponent implements OnInit {
   
@@ -162,8 +179,8 @@ export class M4MoneyEditComponent extends M4ControlComponent implements OnInit {
 @Component({
   selector: 'm4-date-edit',
   template: `
-  <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="controlItem.staticWidth" [compact]="controlItem.compact">
-    <div class="date-box" m4-flex="{{100 - controlItem.staticWidth}}" m4-layout="row">
+  <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="staticWidth" [compact]="compact">
+    <div class="date-box" m4-flex="{{100 - staticWidth}}" m4-layout="row">
       <md-input id="{{uniqid}}" placeholder="{{placeholder}}" m4flex="95"></md-input>
       <md-icon class="material-icons md-18" m4flex="5">event</md-icon>
     </div>
@@ -183,7 +200,7 @@ export class M4MoneyEditComponent extends M4ControlComponent implements OnInit {
       margin-right : 5px;
     }
   `],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem']
+  inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem', 'tileGroup']
 })
 export class M4DateEditComponent extends M4ControlComponent implements OnInit, AfterViewInit {
   uniqid : string;
@@ -217,104 +234,6 @@ export class M4DateEditComponent extends M4ControlComponent implements OnInit, A
   }
 
 }
-
-// ///////////////////////////////////////////////////////////////////////////////
-// //								M4DateEditComponent
-// ///////////////////////////////////////////////////////////////////////////////
-// //
-// @Component({
-//   selector: 'm4-date-edit',
-//   template: `
-//   <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="controlItem.staticWidth" [compact]="controlItem.compact">
-//     <div class="date-box" m4-flex="{{100 - controlItem.staticWidth}}" m4-layout="row">
-//       <md-input placeholder="{{placeholder}}" m4flex="95"></md-input>
-//       <md-icon class="material-icons md-18" m4flex="5">event</md-icon>
-//     </div>
-//   </m4-control-container>
-//   `,
-//   styles: [`
-//     md-icon {
-//       align-self : center;
-//       font-size: 18px;
-//     }
-
-//     md-input {
-//       width:100%;
-//     }
-
-//     .date-box {
-//       margin-right : 5px;
-//     }
-//   `],
-//   inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem']
-// })
-// export class M4DateEditComponent extends M4ControlComponent implements OnInit {
-  
-//   ngOnInit() {
-//     super.onInitControl();
-//   }
-
-// }
-
-// ///////////////////////////////////////////////////////////////////////////////
-// //								M4DateEditComponent
-// ///////////////////////////////////////////////////////////////////////////////
-// //
-// @Component({
-//   selector: 'm4-date-edit',
-//   template: `
-//   <m4-control-container [controlCaption]="controlItem.controlCaption" [staticWidth]="controlItem.staticWidth" [compact]="controlItem.compact">
-//     <div class="date-box" m4-flex="{{100 - controlItem.staticWidth}}" m4-layout="column">
-//       <my-date-picker  [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
-//       <div class="md-input-underline" > <span class="md-input-ripple"></span> </div>
-//     </div>
-//   </m4-control-container>
-//   `,
-//   styles: [`
-//     .date-box {
-//       margin-right : 5px;
-//     }
-
-//     .md-input-underline {
-//       position: static;
-//     }
-
-//     :host {
-//       padding-top : 10px;
-//     }
-//   `],
-//   inputs : ['staticWidth', 'controlCaption', 'compact', 'controlItem']
-// })
-// export class M4DateEditComponent extends M4ControlComponent implements OnInit, AfterViewInit {
-
-//   myDatePickerOptions = {
-//       todayBtnTxt: 'Today',
-//       dateFormat: 'dd-mm-yyyy',
-//       showDateFormatPlaceholder : false,
-//       firstDayOfWeek: 'mo',
-//       sunHighlight: true,
-//       height: 'auto',
-//       width: 'auto',
-//       inline: false,
-//       disableUntil: {year: 2016, month: 8, day: 10},
-//       selectionTxtFontSize: '14px'
-//   };
-//   // @ViewChild('datepicker') datepicker : ElementRef;
-
-//   ngAfterViewInit() {
-//     // var picker = new Pikaday({ field: document.getElementById('datepicker') });
-//     // var picker = new Pikaday({field: this.datepicker })
-//   }
-  
-//   ngOnInit() {
-//     super.onInitControl();
-//   }
-
-//   onDateChanged(event) {
-
-//   }
-
-// }
 
 
 
