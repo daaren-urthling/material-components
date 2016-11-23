@@ -1,0 +1,16 @@
+<md-card>
+  <md-card-title>Master</md-card-title>
+  <md-card-content>
+    <m4-str-edit controlCaption="Name" [tileGroup]="tileGroup"></m4-str-edit>
+    <div m4-layout="row">
+        <m4-str-edit m4-flex="70" controlCaption="Address" [tileGroup]="tileGroup" [staticWidth]="(tileGroup.staticWidth / 70) * 100"></m4-str-edit>
+        <m4-str-edit m4-flex="30" controlCaption="ZIP" [tileGroup]="tileGroup"></m4-str-edit>
+    </div>
+    <m4-str-edit controlCaption="Telephone" [tileGroup]="tileGroup"></m4-str-edit>
+    <m4-str-edit controlCaption="email" [tileGroup]="tileGroup"></m4-str-edit>
+    <div m4-layout="row">
+        <m4-date-edit m4-flex="50" controlCaption="Acquired on" [tileGroup]="tileGroup" [staticWidth]="(tileGroup.staticWidth / 50) * 100"></m4-date-edit>
+        <m4-str-edit m4-flex="50" controlCaption="by"  [tileGroup]="tileGroup"></m4-str-edit>
+    </div>
+  </md-card-content>
+</md-card>

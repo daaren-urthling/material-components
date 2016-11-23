@@ -1,0 +1,12 @@
+<md-card>
+  <md-card-title>Sales</md-card-title>
+  <md-card-content>
+    <m4-str-edit controlCaption="Product" [tileGroup]="tileGroup"></m4-str-edit>
+    <div m4-layout="row">
+        <m4-money-edit m4-flex="70" controlCaption="Price" [tileGroup]="tileGroup" [staticWidth]="(tileGroup.staticWidth / 70) * 100"></m4-money-edit>
+        <m4-str-edit m4-flex="30" controlCaption="VAT" [tileGroup]="tileGroup"></m4-str-edit>
+    </div>
+    <m4-perc-edit controlCaption="Discount" [tileGroup]="tileGroup"></m4-perc-edit>
+    <m4-date-edit controlCaption="Last change" [tileGroup]="tileGroup"></m4-date-edit>
+  </md-card-content>
+</md-card>
