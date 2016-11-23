@@ -9,16 +9,18 @@ import { MyDatePickerModule } from 'mydatepicker';
 
 import { AppComponent } from './app.component';
 import { TileGroupComponent } from './tile-group.component';
-import { M4ControlComponent } from './m4-control.component';
+import { M4ControlContainerComponent, M4StrEditComponent, M4PercEditComponent, M4MoneyEditComponent, M4DateEditComponent } from './m4-control.component';
 import { M4LayoutDirective } from './m4-layout.directive';
 import { M4FlexDirective } from './m4-flex.directive';
-import { M4DateEditComponent } from './m4-date-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TileGroupComponent,
-    M4ControlComponent,
+    M4ControlContainerComponent,
+    M4StrEditComponent,
+    M4PercEditComponent,
+    M4MoneyEditComponent,
     M4LayoutDirective,
     M4FlexDirective,
     M4DateEditComponent

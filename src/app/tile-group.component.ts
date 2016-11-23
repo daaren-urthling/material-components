@@ -12,11 +12,12 @@ export class TileGroupComponent {
   @Input() compact : boolean = false;
 
   controlItems : M4ControlItem[] = [
-    { controlClass : 'text', controlCaption : 'Name'},
-    { controlClass : 'text', controlCaption : 'Address'},
-    { controlClass : 'text', controlCaption : 'ZIP'},
-    { controlClass : 'text', controlCaption : 'Telephone'},
-    { controlClass : 'text', controlCaption : 'email'},
+    { controlCaption : 'Name'},
+    { controlCaption : 'Address'},
+    { controlCaption : 'ZIP'},
+    { controlCaption : 'Telephone'},
+    { controlCaption : 'email'},
   ]
 
+  discount : M4ControlItem = { controlCaption : 'Discount'}
 }
