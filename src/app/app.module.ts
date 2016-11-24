@@ -28,6 +28,7 @@ import { M4TdContactsMaindataCompanydataComponent } from './ERP/m4-td-contacts-m
 import { M4TdContactsMaindataAddressComponent } from './ERP/m4-td-contacts-maindata-address.component';
 import { M4TdContactsMaindataOtherdataComponent } from './ERP/m4-td-contacts-maindata-otherdata.component';
 import { M4TdContactsMaindataContactsComponent } from './ERP/m4-td-contacts-maindata-contacts.component';
+import { M4SelectorButtonComponent } from './m4-selector-button.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { M4TdContactsMaindataContactsComponent } from './ERP/m4-td-contacts-main
     M4TdContactsMaindataCompanydataComponent,
     M4TdContactsMaindataAddressComponent,
     M4TdContactsMaindataOtherdataComponent,
-    M4TdContactsMaindataContactsComponent
+    M4TdContactsMaindataContactsComponent,
+    M4SelectorButtonComponent
   ],
   imports: [
     BrowserModule,

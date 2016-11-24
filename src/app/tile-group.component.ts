@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { M4ControlItem } from './m4-control.component';
 
 @Component({
   selector: 'app-tile-group',
