@@ -1,10 +1,22 @@
-<div m4-layout="column"> 
-    <div m4-layout="row"> 
-        <m4-tile-master class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-master>
-        <m4-tile-sales class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-sales>
+<md-sidenav-layout>
+    <md-sidenav #start mode="side" opened="false">
+        selector
+    </md-sidenav>
+
+    <div m4-layout="column"> 
+        <div m4-layout="row"> 
+            <m4-td-contacts-maindata-companydata class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-td-contacts-maindata-companydata>
+            <m4-td-contacts-maindata-address class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-td-contacts-maindata-address>
+        </div>
+        <m4-td-contacts-maindata-otherdata class="m4-tile" [tileGroup]="this"></m4-td-contacts-maindata-otherdata>
+        <m4-td-contacts-maindata-contacts class="m4-tile" [tileGroup]="this"></m4-td-contacts-maindata-contacts>
+        <!--<div m4-layout="row"> 
+            <m4-tile-master class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-master>
+            <m4-tile-sales class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-sales>
+        </div>
+        <div m4-layout="row"> 
+            <m4-tile-sales class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-sales>
+            <m4-tile-master class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-master>
+        </div>-->
     </div>
-    <div m4-layout="row"> 
-        <m4-tile-sales class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-sales>
-        <m4-tile-master class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-tile-master>
-    </div>
-</div>
+</md-sidenav-layout>

@@ -1,0 +1,18 @@
+<md-card>
+  <md-card-title>Address Data</md-card-title>
+  <md-card-content>
+    <m4-text-edit controlCaption="Address" [tileGroup]="tileGroup" action="map"></m4-text-edit>
+    <m4-str-edit controlCaption="Additional Address" [tileGroup]="tileGroup"></m4-str-edit>
+    <m4-str-edit controlCaption="Municipality" [tileGroup]="tileGroup" action="hkl"></m4-str-edit>
+    <m4-str-edit controlCaption="ZIP Code" [tileGroup]="tileGroup"></m4-str-edit>
+    <div m4-layout="row">
+      <m4-str-edit controlCaption="County" [tileGroup]="tileGroup" m4-flex="50" [staticWidth]="(tileGroup.staticWidth / 50) * 100" action="hkl"></m4-str-edit>
+      <m4-str-edit controlCaption="Region" [tileGroup]="tileGroup" m4-flex="50" action="hkl"></m4-str-edit>
+    </div>
+    <m4-str-edit controlCaption="Country" [tileGroup]="tileGroup" action="hkl"></m4-str-edit>
+    <div m4-layout="row">
+      <m4-str-edit controlCaption="Latitude/Logitude" [tileGroup]="tileGroup" m4-flex="60" [staticWidth]="(tileGroup.staticWidth / 60) * 100"></m4-str-edit>
+      <m4-str-edit [tileGroup]="tileGroup" [staticWidth]="0" m4-flex="40"></m4-str-edit>
+    </div>
+  </md-card-content>
+</md-card>

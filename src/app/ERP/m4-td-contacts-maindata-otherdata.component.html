@@ -1,0 +1,18 @@
+<md-card>
+  <md-card-title>Other Data</md-card-title>
+  <md-card-content>
+    <div m4-layout="row">
+      <div class="m4-tile-part-left" m4-layout="column" m4-flex="50">
+        <m4-date-edit controlCaption="Acquired on" [tileGroup]="tileGroup"></m4-date-edit>
+        <m4-bool-button controlCaption="Converted into customer" [tileGroup]="tileGroup" [leftCaption]="true"></m4-bool-button>
+        <m4-str-edit controlCaption="Customer" [tileGroup]="tileGroup"></m4-str-edit>
+        <m4-date-edit controlCaption="Date" [tileGroup]="tileGroup"></m4-date-edit>
+      </div>
+      <div class="m4-tile-part-right" m4-layout="column" m4-flex="50">
+        <m4-str-edit controlCaption="Category" [tileGroup]="tileGroup" action="hkl"></m4-str-edit>
+        <m4-str-edit controlCaption="Origin" [tileGroup]="tileGroup" action="hkl"></m4-str-edit>
+        <m4-str-edit controlCaption="Origin Specification" [tileGroup]="tileGroup" action="hkl"></m4-str-edit>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>

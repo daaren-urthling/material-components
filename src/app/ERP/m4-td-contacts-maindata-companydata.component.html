@@ -1,0 +1,18 @@
+<md-card>
+  <md-card-title>Main Data</md-card-title>
+  <md-card-content>
+    <div m4-layout="row">
+      <m4-str-edit controlCaption="Code" [tileGroup]="tileGroup"  m4-flex="80" [staticWidth]="(tileGroup.staticWidth / 80) * 100" action="autonum"></m4-str-edit>
+      <m4-bool-button controlCaption="Disabled" [tileGroup]="tileGroup" m4-flex="20"></m4-bool-button>
+    </div>
+    <m4-text-edit controlCaption="Company Name" [tileGroup]="tileGroup"></m4-text-edit>
+    <m4-str-edit controlCaption="Title" [tileGroup]="tileGroup" action="hkl"></m4-str-edit>
+    <m4-bool-button controlCaption="Natural person" [tileGroup]="tileGroup" [leftCaption]="true"></m4-bool-button>
+    <div m4-layout="row">
+      <m4-str-edit controlCaption="ISO Country"  m4-flex="50" [tileGroup]="tileGroup" [staticWidth]="(tileGroup.staticWidth / 50) * 100" action="hkl"></m4-str-edit>
+      <m4-enum-combo controlCaption="Type" m4-flex="50" [elements]= "['Domestic', 'EU', 'Non EU']" [tileGroup]="tileGroup"></m4-enum-combo>
+    </div>
+    <m4-str-edit controlCaption="Fiscal Code" [tileGroup]="tileGroup"></m4-str-edit>
+    <m4-str-edit controlCaption="Tax Number" [tileGroup]="tileGroup"></m4-str-edit>
+  </md-card-content>
+</md-card>

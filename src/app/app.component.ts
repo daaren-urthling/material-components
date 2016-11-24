@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  staticWidth = 15;
+  staticWidth = 25;
   compact = false;
 
   ngOnInit () {

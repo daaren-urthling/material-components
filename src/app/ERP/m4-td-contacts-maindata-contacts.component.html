@@ -1,0 +1,24 @@
+<md-card>
+  <md-card-title>Contacts</md-card-title>
+  <md-card-content>
+    <div m4-layout="row">
+      <div class="m4-tile-part-left" m4-layout="column" m4-flex="50">
+        <div m4-layout="row">
+          <m4-str-edit controlCaption="Phone" [tileGroup]="tileGroup" m4-flex="60" [staticWidth]="(tileGroup.staticWidth / 60) * 100"></m4-str-edit>
+          <m4-str-edit [tileGroup]="tileGroup" [staticWidth]="0" m4-flex="40"></m4-str-edit>
+        </div>
+        <div m4-layout="row">
+          <m4-str-edit controlCaption="Telex/Fax" [tileGroup]="tileGroup" m4-flex="60" [staticWidth]="(tileGroup.staticWidth / 60) * 100"></m4-str-edit>
+          <m4-str-edit [tileGroup]="tileGroup" [staticWidth]="0" m4-flex="40"></m4-str-edit>
+        </div>
+        <m4-text-edit controlCaption="Contact Person" [tileGroup]="tileGroup"></m4-text-edit>
+        <m4-str-edit  controlCaption="Working Time" [tileGroup]="tileGroup"></m4-str-edit>
+      </div>
+      <div class="m4-tile-part-right" m4-layout="column" m4-flex="50">
+        <m4-text-edit controlCaption="Email" [tileGroup]="tileGroup" action="mail"></m4-text-edit>
+        <m4-text-edit controlCaption="Skype" [tileGroup]="tileGroup"></m4-text-edit>
+        <m4-str-edit  controlCaption="Internet" [tileGroup]="tileGroup"></m4-str-edit>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>

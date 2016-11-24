@@ -19,7 +19,8 @@
       "mobile": false,
       "styles": [
         "styles.css",
-        "otherComponents/pikaday.css"
+        "otherComponents/pikaday.css",
+        "mago.scss"
       ],
       "scripts": [
         "otherComponents/pikaday.js",
