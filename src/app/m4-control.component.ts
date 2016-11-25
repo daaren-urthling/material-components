@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { TileGroupComponent } from './tile-group.component';
 
+      // <div [hidden]="compact"  m4-flex="{{staticWidth}}">
+      // </div>
+
 ///////////////////////////////////////////////////////////////////////////////
 //								M4ControlContainerComponent
 ///////////////////////////////////////////////////////////////////////////////
@@ -9,9 +12,7 @@ import { TileGroupComponent } from './tile-group.component';
   selector: 'm4-control-container',
   template: `
     <div m4-layout="row">
-      <div [hidden]="compact"  m4-flex="{{staticWidth}}">
-      <label class="m4-control-caption" [ngClass]="captionClass" [hidden]="compact">{{controlCaption}}</label>
-      </div>
+      <label *ngIf="!compact" class="m4-control-caption" m4-flex="{{staticWidth}}" [ngClass]="captionClass">{{controlCaption}}</label>
       <ng-content></ng-content>
     </div>
   `,
@@ -20,10 +21,11 @@ import { TileGroupComponent } from './tile-group.component';
         text-align: end;
         align-self: center;
         padding-right: 6px;    
+        margin-top: 4px;
     }
     .m4-control-caption-baseline {
         align-self: baseline;
-        margin-top: 11px;
+        margin-top: 4px;
     }
   `]
 })
@@ -31,17 +33,13 @@ export class M4ControlContainerComponent implements OnInit {
 
   @Input() staticWidth : number = 30;
   @Input() controlCaption : string;
-  @Input() compact : boolean = false;
+  @Input() compact : boolean;
   @Input() captionPositionBaseline : boolean;
   captionClass : string;
 
   ngOnInit() {
     if (this.captionPositionBaseline)
       this.captionClass = "m4-control-caption-baseline"; 
-  }
-
-  isCompact() {
-    return this.compact;
   }
 }
 
@@ -51,9 +49,8 @@ export class M4ControlContainerComponent implements OnInit {
 //
 class M4ControlComponent {
   // @Input on derived classes
-  staticWidth : number = -1;
+  staticWidth : number;
   controlCaption : string;
-  compact : boolean;
   tileGroup : TileGroupComponent;
   action : string;
 
@@ -62,18 +59,10 @@ class M4ControlComponent {
   hasAction : boolean = false;
 
   onInitControl() {
-    if ((this.staticWidth == null || this.staticWidth == -1) && this.tileGroup != null) {
-      this.staticWidth = this.tileGroup.staticWidth;
-    }
-
-    if (this.compact == null && this.tileGroup != null) {
-      this.compact = this.tileGroup.compact;
-    }
-
-    // if (this.compact) { 
-    //   this.placeholder = this.controlCaption; 
-    //   this.staticWidth = 0;
+    // if (this.staticWidth == null  && this.tileGroup != null) {
+    //   this.staticWidth = this.tileGroup.staticWidth;
     // }
+
     this.placeholder = this.controlCaption; 
 
     if (this.action != null && this.action != "") {
@@ -87,6 +76,21 @@ class M4ControlComponent {
     }
   }
 
+  isCompact() : boolean {
+    return this.tileGroup != null && this.tileGroup.compact;
+  }
+
+  getStaticWidth() : number {
+    if (this.staticWidth != null) {
+      return this.staticWidth;
+    }
+    
+    if (this.tileGroup != null)
+       return this.tileGroup.staticWidth;
+    
+    return 0;
+  }
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -96,17 +100,16 @@ class M4ControlComponent {
 @Component({
   selector: 'm4-str-edit',
   template: `
-    <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="tileGroup.compact">
-      <md-input m4-flex="{{100 - staticWidth}}" placeholder="{{placeholder}}">
+    <m4-control-container [controlCaption]="controlCaption" [staticWidth]="getStaticWidth()" [compact]="isCompact()">
+      <md-input m4-flex="{{100 - getStaticWidth()}}" placeholder="{{isCompact() ? placeholder : ''}}">
         <span *ngIf="hasAction" md-suffix><md-icon class="material-icons">{{icon}}</md-icon></span>
       </md-input>
     </m4-control-container>
     `,
   styles: [],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup', 'action']
+  inputs : ['staticWidth', 'controlCaption', 'tileGroup', 'action']
 })
 export class M4StrEditComponent extends M4ControlComponent implements OnInit {
-  compactClass : string;
   ngOnInit() {
     super.onInitControl();
   }  
@@ -119,15 +122,15 @@ export class M4StrEditComponent extends M4ControlComponent implements OnInit {
 @Component({
   selector: 'm4-text-edit',
   template: `
-    <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="compact" [captionPositionBaseline]="true">
-      <md-textarea rows="3" m4-flex="{{100 - staticWidth}}" placeholder="{{placeholder}}">
+    <m4-control-container [controlCaption]="controlCaption" [staticWidth]="getStaticWidth()" [compact]="isCompact()" [captionPositionBaseline]="true">
+      <md-textarea rows="3" m4-flex="{{100 - getStaticWidth()}}" placeholder="{{isCompact() ? placeholder : ''}}">
         <span *ngIf="hasAction" md-suffix><md-icon class="material-icons">{{icon}}</md-icon></span>
       </md-textarea>
     </m4-control-container>
     `,
   styles: [`
   `],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup', 'action']
+  inputs : ['staticWidth', 'controlCaption', 'tileGroup', 'action']
 })
 export class M4TextEditComponent extends M4ControlComponent implements OnInit {
 
@@ -143,14 +146,14 @@ export class M4TextEditComponent extends M4ControlComponent implements OnInit {
 @Component({
   selector: 'm4-perc-edit',
   template: `
-  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="compact">
-    <md-input m4-flex="{{100 - staticWidth}}" align="end" placeholder="{{placeholder}}">
+  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="getStaticWidth()" [compact]="isCompact()">
+    <md-input m4-flex="{{100 - getStaticWidth()}}" align="end" placeholder="{{isCompact() ? placeholder : ''}}">
       <span md-suffix>&nbsp;%</span>
     </md-input>
   </m4-control-container>
   `,
   styles: [],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup']
+  inputs : ['staticWidth', 'controlCaption', 'tileGroup']
 })
 export class M4PercEditComponent extends M4ControlComponent implements OnInit {
 
@@ -166,15 +169,15 @@ export class M4PercEditComponent extends M4ControlComponent implements OnInit {
 @Component({
   selector: 'm4-money-edit',
   template: `
-  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="compact">
-    <md-input m4-flex="{{100 - staticWidth}}" align="end" placeholder="{{placeholder}}">
+  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="getStaticWidth()" [compact]="isCompact()">
+    <md-input m4-flex="{{100 - getStaticWidth()}}" align="end" placeholder="{{isCompact() ? placeholder : ''}}">
       <span md-prefix>€</span>
       <span md-suffix>.00</span>
     </md-input>
   </m4-control-container>
   `,
   styles: [],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup']
+  inputs : ['staticWidth', 'controlCaption', 'tileGroup']
 })
 export class M4MoneyEditComponent extends M4ControlComponent implements OnInit {
   
@@ -190,11 +193,11 @@ export class M4MoneyEditComponent extends M4ControlComponent implements OnInit {
 @Component({
   selector: 'm4-bool-button',
   template: `
-    <m4-control-container *ngIf="!leftCaption" [staticWidth]="0" [compact]="false">  
+    <m4-control-container *ngIf="!isLeftCaption()" [staticWidth]="0" [compact]="false">  
       <md-checkbox m4-flex="100" color="primary">{{controlCaption}}</md-checkbox>
     </m4-control-container>
-    <m4-control-container *ngIf="leftCaption" [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="compact">
-      <md-checkbox m4-flex="{{100 - staticWidth}}" color="primary"></md-checkbox>
+    <m4-control-container *ngIf="isLeftCaption()" [controlCaption]="controlCaption" [staticWidth]="getStaticWidth()" [compact]="isCompact()">
+      <md-checkbox m4-flex="{{100 - getStaticWidth()}}" color="primary"></md-checkbox>
     </m4-control-container>
   `,
   styles: [`
@@ -202,17 +205,21 @@ export class M4MoneyEditComponent extends M4ControlComponent implements OnInit {
       align-self : center;
     }
   `],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup', 'leftCaption']
+  inputs : ['staticWidth', 'controlCaption', 'tileGroup', 'leftCaption']
 })
 export class M4BoolButtonComponent extends M4ControlComponent implements OnInit {
   leftCaption : boolean = false;
 
   ngOnInit() {
     super.onInitControl();
-    if (this.compact) {
-      this.leftCaption = false;
-    }
   }  
+
+  isLeftCaption() : boolean {
+    if (this.isCompact()) {
+      return false;
+    }
+    return this.leftCaption;
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -222,14 +229,14 @@ export class M4BoolButtonComponent extends M4ControlComponent implements OnInit 
 @Component({
   selector: 'm4-date-edit',
   template: `
-  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="compact">
-    <md-input id="{{uniqid}}" placeholder="{{placeholder}}" m4-flex="{{100 - staticWidth}}">
+  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="getStaticWidth()" [compact]="isCompact()">
+    <md-input id="{{uniqid}}" placeholder="{{isCompact() ? placeholder : ''}}" m4-flex="{{100 - getStaticWidth()}}">
       <span md-suffix><md-icon class="material-icons">event</md-icon></span>
     </md-input>
   </m4-control-container>
   `,
   styles: [],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup']
+  inputs : ['staticWidth', 'controlCaption', 'tileGroup']
 })
 export class M4DateEditComponent extends M4ControlComponent implements OnInit, AfterViewInit {
   uniqid : string;
@@ -271,9 +278,9 @@ export class M4DateEditComponent extends M4ControlComponent implements OnInit, A
 @Component({
   selector: 'm4-enum-combo',
   template: `
-  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="compact">
-    <div class="m4-input-box" m4-flex="{{100 - staticWidth}}" m4-layout="column">
-      <select>
+  <m4-control-container [controlCaption]="controlCaption" [staticWidth]="getStaticWidth()" [compact]="isCompact()">
+    <div class="m4-input-box" m4-flex="{{100 - getStaticWidth()}}" m4-layout="column">
+      <select [style.margin-top]="isCompact() ? '24px' : '14px'">
         <option *ngFor="let elem of elements">{{elem}}</option>
       </select>
       <div class="md-input-underline"> <span class="md-input-ripple"></span> </div>
@@ -293,7 +300,7 @@ export class M4DateEditComponent extends M4ControlComponent implements OnInit, A
       position: static;
     }    
   `],
-  inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup', 'elements']
+  inputs : ['staticWidth', 'controlCaption', 'tileGroup', 'elements']
 })
 export class M4EnumComboComponent extends M4ControlComponent implements OnInit {
   
@@ -303,8 +310,3 @@ export class M4EnumComboComponent extends M4ControlComponent implements OnInit {
     super.onInitControl();
   }  
 }
-
-
-
-
-

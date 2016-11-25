@@ -9,18 +9,100 @@
     margin-left: 5px;
 }
 
+.m4-tile md-card {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.m4-tile md-card-title {
+    font-size: 18px;
+    border-bottom: 1pt solid #1976d2;
+}
+
+.m4-tile md-input {
+    margin-right : 8px;
+}
+
+.m4-tile md-input .md-input-suffix {
+    text-align: end;
+ }
+
+.m4-tile .m4-input-box {
+    margin-right : 8px;
+}
+
+.m4-tile .m4-input-box md-input {
+    width:100%;
+}
+
+.m4-tile md-textarea .md-input-suffix {
+    vertical-align:top;
+    width:1px; /* to show the action icon at the minimum possible size */
+}
+
 .m4-tile md-checkbox {
     margin-right : 8px;
     margin-top: 16px;
     margin-bottom: 16px;
 }
 
-.m4-control-caption {
-    display: none;
+.m4-tile md-checkbox .md-checkbox-frame {
+    border-color: #5F5F5F;
 }
 
+.m4-tile md-icon {
+    align-self : center;
+}
+
+.m4-tile-part-left {
+    padding-right: 16px;
+    margin-right: 10px;
+}
+
+.m4-tile-part-right {
+    padding-left: 16px;
+    margin-left: 10px;
+}
+
+/* Deroghe a Material Design attivabili su schermi grossi */
+.m4-tile-compact md-card {
+    padding: 10px;      
+}
+
+.m4-tile-compact .md-input-wrapper {    
+    margin-top : 4px;
+    margin-bottom : 4px;
+}
+
+.m4-tile-compact .md-input-underline {
+    border-color: rgba(0, 0, 0, 0.117647);
+}
+
+.m4-tile-compact md-checkbox .md-checkbox-inner-container { 
+    height: 14px;
+    width: 14px;
+}
+
+.m4-tile-compact md-checkbox {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.m4-tile-compact .md-input-underline {
+    margin-top: 0;
+}
+
+.m4-tile-compact .m4-control-caption {
+    display: block;
+}
+
+.m4-tile-compact md-icon {
+    font-size: 18px;
+}
+
+
 /* Deroghe a Material Design su schermi grossi */
-@media screen and (min-width: 1200px) {
+/*@media screen and (min-width: 1200px) {
     .m4-tile .md-input-wrapper {    
         margin-top : 2px;
         margin-bottom : 2px;
@@ -47,66 +129,5 @@
     .m4-tile .md-input-placeholder {
         color : transparent;
     }
-}
-
-
-.m4-tile md-input .md-input-suffix {
-    text-align: end;
- }
-
-.m4-tile md-textarea .md-input-suffix {
-    vertical-align:top;
-    width:1px; /* minimum */
-}
-
-/*.m4-tile md-checkbox .md-checkbox-inner-container { 
-    height: 14px;
-    width: 14px;
 }*/
-
-.m4-tile md-checkbox .md-checkbox-frame {
-    border-color: #5F5F5F;
-}
-
-.m4-tile md-card {
-    box-sizing: border-box;
-    height: 100%;
-    padding: 10px;      
-}
-
-.m4-tile md-card-title {
-    font-size: 18px;
-    border-bottom: 1pt solid #1976d2;
-}
-
-.m4-tile .md-input-underline {
-    border-color: rgba(0, 0, 0, 0.117647);
-}
-
-.m4-tile md-input {
-    margin-right : 8px;
-}
-
-.m4-tile .m4-input-box {
-    margin-right : 8px;
-}
-
-.m4-tile md-icon {
-    align-self : center;
-    font-size: 18px;
-}
-
-.m4-tile .m4-input-box md-input {
-    width:100%;
-}
-
- .m4-tile-part-left {
-    padding-right: 16px;
-    margin-right: 10px;
- }
-
- .m4-tile-part-right {
-    padding-left: 16px;
-    margin-left: 10px;
- }
 
