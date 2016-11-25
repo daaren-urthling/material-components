@@ -3,11 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'm4-selector-button',
   template: `
-    <div class="m4-selector-button-container" [ngClass]="buttonContainerClass">
-      <button md-button [ngClass]="buttonClass">
+    <div class="m4-selector-button-container">
+      <button md-button class="m4-selector-button">
           <div m4-layout="column">
               <md-icon class="m4-selector-icon">{{icon}}</md-icon>
-              <span *ngIf="!compact">{{caption}}</span>
+              <span class="m4-selector-caption">{{caption}}</span>
           </div>
       </button>
     </div>
@@ -20,18 +20,19 @@ import { Component, Input, OnInit } from '@angular/core';
         height: 32px;
     }
 
-    button {
-      max-width : 120px;
+    .m4-selector-button {
+      max-width : 100px;
+      min-width : 0;
       vertical-align :middle;
-    }
+      padding-right: 5px;
+      padding-left: 5px;
+      }
 
-    .m4-narrow-selector {
-      max-width : 80px;      
-    }
-
-    span {
+    .m4-selector-caption {
       white-space: normal;
       line-height: 18px;      
+      font-weight : normal;
+      font-size : 12px;
     }
 
     .m4-selector-button-container {
@@ -46,22 +47,23 @@ import { Component, Input, OnInit } from '@angular/core';
       display:inline-flex;
     }
 
-    .m4-narrow-selector-button-container:before{
-      padding:15% 0;
+    @media screen and (max-width: 1200px) {
+      .m4-selector-button-container:before{
+        padding:50% 0;
+      }
+      .m4-selector-button {
+        max-width : 70px;      
+      }
+      .m4-selector-caption {
+        display : none;
+      }
     }
   `]
 })
 export class M4SelectorButtonComponent implements OnInit {
   @Input() caption : string;
   @Input() icon : string;
-  @Input() compact : string;
-  buttonClass : string;
-  buttonContainerClass : string;
 
   ngOnInit() {
-    if (this.compact) {
-      this.buttonClass = "m4-narrow-selector";
-      this.buttonContainerClass = "m4-narrow-selector-button-container";
-    }
   }
 }

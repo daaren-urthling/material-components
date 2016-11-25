@@ -5,13 +5,50 @@
 /*@import '~@angular/material/core/theming/prebuilt/purple-green.css';*/
 
 .m4-tile {
-    margin: 10px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
-.m4-tile .md-input-wrapper {    /* DEROGA A MATERIAL */
-    margin-top: 12px;
-    margin-bottom: 12px;
+.m4-tile md-checkbox {
+    margin-right : 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
+
+.m4-control-caption {
+    display: none;
+}
+
+/* Deroghe a Material Design su schermi grossi */
+@media screen and (min-width: 1200px) {
+    .m4-tile .md-input-wrapper {    
+        margin-top : 2px;
+        margin-bottom : 2px;
+    }
+
+    .m4-tile md-checkbox .md-checkbox-inner-container { 
+        height: 14px;
+        width: 14px;
+    }
+
+    .m4-tile md-checkbox {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+
+    .m4-tile .md-input-underline {
+        margin-top: 0;
+    }
+    
+    .m4-control-caption {
+        display: block;
+    }
+
+    .m4-tile .md-input-placeholder {
+        color : transparent;
+    }
+}
+
 
 .m4-tile md-input .md-input-suffix {
     text-align: end;
@@ -22,11 +59,10 @@
     width:1px; /* minimum */
 }
 
-
-.m4-tile md-checkbox .md-checkbox-inner-container { /* DEROGA A MATERIAL */
+/*.m4-tile md-checkbox .md-checkbox-inner-container { 
     height: 14px;
     width: 14px;
-}
+}*/
 
 .m4-tile md-checkbox .md-checkbox-frame {
     border-color: #5F5F5F;
@@ -35,7 +71,12 @@
 .m4-tile md-card {
     box-sizing: border-box;
     height: 100%;
-    padding: 16px;      
+    padding: 10px;      
+}
+
+.m4-tile md-card-title {
+    font-size: 18px;
+    border-bottom: 1pt solid #1976d2;
 }
 
 .m4-tile .md-input-underline {
@@ -43,12 +84,6 @@
 }
 
 .m4-tile md-input {
-    margin-right : 8px;
-}
-
-.m4-tile md-checkbox {
-    margin-top : 12px;
-    margin-bottom : 12px;
     margin-right : 8px;
 }
 

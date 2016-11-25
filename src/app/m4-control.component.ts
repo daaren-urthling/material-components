@@ -9,7 +9,9 @@ import { TileGroupComponent } from './tile-group.component';
   selector: 'm4-control-container',
   template: `
     <div m4-layout="row">
-      <label class="m4-control-caption" [ngClass]="captionClass" m4-flex="{{staticWidth}}" [hidden]="compact">{{controlCaption}}</label>
+      <div [hidden]="compact"  m4-flex="{{staticWidth}}">
+      <label class="m4-control-caption" [ngClass]="captionClass" [hidden]="compact">{{controlCaption}}</label>
+      </div>
       <ng-content></ng-content>
     </div>
   `,
@@ -68,10 +70,11 @@ class M4ControlComponent {
       this.compact = this.tileGroup.compact;
     }
 
-    if (this.compact) { 
-      this.placeholder = this.controlCaption; 
-      this.staticWidth = 0;
-    }
+    // if (this.compact) { 
+    //   this.placeholder = this.controlCaption; 
+    //   this.staticWidth = 0;
+    // }
+    this.placeholder = this.controlCaption; 
 
     if (this.action != null && this.action != "") {
       this.hasAction = true;
@@ -93,7 +96,7 @@ class M4ControlComponent {
 @Component({
   selector: 'm4-str-edit',
   template: `
-    <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="compact">
+    <m4-control-container [controlCaption]="controlCaption" [staticWidth]="staticWidth" [compact]="tileGroup.compact">
       <md-input m4-flex="{{100 - staticWidth}}" placeholder="{{placeholder}}">
         <span *ngIf="hasAction" md-suffix><md-icon class="material-icons">{{icon}}</md-icon></span>
       </md-input>
@@ -103,15 +106,11 @@ class M4ControlComponent {
   inputs : ['staticWidth', 'controlCaption', 'compact', 'tileGroup', 'action']
 })
 export class M4StrEditComponent extends M4ControlComponent implements OnInit {
+  compactClass : string;
   ngOnInit() {
     super.onInitControl();
   }  
 }
-
-  // <div class="m4-input-box" m4-flex="{{100 - staticWidth}}" m4-layout="row">
-  //   <md-textarea rows="3" placeholder="{{placeholder}}" m4flex="95"></md-textarea>
-  //   <md-icon class="material-icons md-18" m4flex="5">event</md-icon>
-  // </div>
 
 ///////////////////////////////////////////////////////////////////////////////
 //								M4TextEditComponent
@@ -216,11 +215,6 @@ export class M4BoolButtonComponent extends M4ControlComponent implements OnInit 
   }  
 }
 
-    // <div class="m4-input-box" m4-flex="{{100 - staticWidth}}" m4-layout="row">
-    //   <md-input id="{{uniqid}}" placeholder="{{placeholder}}" m4flex="95"></md-input>
-    //   <md-icon class="material-icons md-18" m4flex="5">event</md-icon>
-    // </div>
-
 ///////////////////////////////////////////////////////////////////////////////
 //								M4DateEditComponent
 ///////////////////////////////////////////////////////////////////////////////
@@ -269,18 +263,6 @@ export class M4DateEditComponent extends M4ControlComponent implements OnInit, A
   }
 
 }
-    //
-  //  <div class="date-box" m4-flex="{{100 - staticWidth}}" m4-layout="row">
-  //     <md-input id="{{uniqid}}" placeholder="{{placeholder}}" m4flex="95"></md-input>
-  //     <md-icon class="material-icons md-18" m4flex="5">event</md-icon>
-  //   </div>
-      //<md-icon class="material-icons" m4flex="5">keyboard_arrow_down</md-icon>
-      //<md-input placeholder="{{placeholder}}" m4-flex="95"></md-input>
-
-// +    <div class="date-box" m4-flex="{{100 - staticWidth}}" m4-layout="column">
-//  +      <my-date-picker  [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
-//  +      <div class="md-input-underline" > <span class="md-input-ripple"></span> </div>
-//  +    </div>
 
 ///////////////////////////////////////////////////////////////////////////////
 //								M4EnumComboComponent

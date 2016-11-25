@@ -1,10 +1,13 @@
 <md-sidenav-layout>
-    <md-sidenav #start mode="side" opened="true" m4-layout="column" style="margin-top:10px; margin-bottom:10px; margin-left:5px; overflow:hidden; ">
-        <m4-selector-button caption="Main" icon="home" [compact]="this.compact"></m4-selector-button>
-        <m4-selector-button caption="Administrative Data" icon="account_balance" [compact]="this.compact"></m4-selector-button>
-        <m4-selector-button caption="Branches" icon="store_mall_directory" [compact]="this.compact"></m4-selector-button>
+    <md-sidenav class="m4-selector-sidenav" #start mode="side" [opened]="opened" m4-layout="column">
+        <m4-selector-button caption="Main Data" icon="home" ></m4-selector-button>
+        <m4-selector-button caption="Other Branches References" icon="store_mall_directory" ></m4-selector-button>
+        <m4-selector-button caption="Payment Data" icon="payment" ></m4-selector-button>
+        <m4-selector-button caption="Sales  Data" icon="attach_money" ></m4-selector-button>
+        <m4-selector-button caption="Administrative Data" icon="account_balance" ></m4-selector-button>
+        <m4-selector-button caption="Notes" icon="attach_file" ></m4-selector-button>
     </md-sidenav>
-    <div m4-layout="column"> 
+    <div class="m4-tile-container" m4-layout="column"> 
         <div m4-layout="row"> 
             <m4-td-contacts-maindata-companydata class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-td-contacts-maindata-companydata>
             <m4-td-contacts-maindata-address class="m4-tile" m4-flex="50" [tileGroup]="this"></m4-td-contacts-maindata-address>
@@ -21,3 +24,4 @@
         </div>-->
     </div>
 </md-sidenav-layout>
+

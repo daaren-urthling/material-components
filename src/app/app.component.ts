@@ -12,5 +12,7 @@ export class AppComponent implements OnInit {
   ngOnInit () {
     console.log(window.innerWidth);
     this.compact = window.innerWidth < 1200;
+    // this.compact = true;
+    // this.compact = false;
   }
 }
