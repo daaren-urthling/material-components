@@ -5,8 +5,13 @@
         <m4-selector-button caption="Payment Data" icon="payment" ></m4-selector-button>
         <m4-selector-button caption="Sales  Data" icon="attach_money" ></m4-selector-button>
         <m4-selector-button caption="Administrative Data" icon="account_balance" ></m4-selector-button>
-        <m4-selector-button caption="Notes" icon="attach_file" ></m4-selector-button>
+        <m4-selector-button caption="Notes" icon="attach_file" (click)="onNotesClicked()"></m4-selector-button>
     </md-sidenav>
+    <div m4-layout="column">
+        <div class="m4-header-strip">
+            Contact <b>{{contact.companyName}} {{contact.address}} {{contact.code != "" ? "["+contact.code+"]" : ""}}</b>
+        </div>
+    </div>
     <div class="m4-tile-container" m4-layout="column"> 
         <div m4-layout="row"> 
             <m4-td-contacts-maindata-companydata class="m4-tile" [class.m4-tile-compact]="!compact" m4-flex="50" [tileGroup]="this"></m4-td-contacts-maindata-companydata>

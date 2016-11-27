@@ -1,7 +1,7 @@
 <md-card>
   <md-card-title>Address Data</md-card-title>
   <md-card-content>
-    <m4-text-edit controlCaption="Address" [tileGroup]="tileGroup" action="map"></m4-text-edit>
+    <m4-text-edit controlCaption="Address" [tileGroup]="tileGroup" [bindings]="{record : tileGroup.contact, fieldName:'address'}" action="map"></m4-text-edit>
     <m4-str-edit controlCaption="Additional Address" [tileGroup]="tileGroup"></m4-str-edit>
     <m4-str-edit controlCaption="Municipality" [tileGroup]="tileGroup" action="hkl"></m4-str-edit>
     <m4-str-edit controlCaption="ZIP Code" [tileGroup]="tileGroup"></m4-str-edit>

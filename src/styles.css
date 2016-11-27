@@ -4,6 +4,23 @@
 /*@import '~@angular/material/core/theming/prebuilt/pink-bluegrey.css';*/
 /*@import '~@angular/material/core/theming/prebuilt/purple-green.css';*/
 
+.m4-header-strip {
+    margin-top: 10px;
+    margin-left: 5px;
+    padding-top: 10px;
+    font-family : Roboto, "Helvetica Neue", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #1976d2;
+    display: inline-block;
+}
+
+.m4-tile-container {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-right: 5px;      
+}
+
 .m4-tile {
     margin-top: 5px;
     margin-left: 5px;
@@ -99,6 +116,7 @@
 .m4-tile-compact md-icon {
     font-size: 18px;
 }
+
 
 
 /* Deroghe a Material Design su schermi grossi */

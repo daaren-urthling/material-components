@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+export class Contact {
+  code : string = "";
+  companyName : string = "";
+  address : string = "";
+}
+
 @Component({
   selector: 'app-tile-group',
   templateUrl: './tile-group.component.html',
@@ -9,11 +15,6 @@ import { Component, Input, OnInit } from '@angular/core';
         margin-bottom:10px; 
         overflow:hidden;
       }
-    .m4-tile-container {
-      padding-top: 5px;
-      padding-bottom: 10px;
-      padding-right: 5px;      
-    }
   `]
 })
 export class TileGroupComponent implements OnInit {
@@ -21,10 +22,17 @@ export class TileGroupComponent implements OnInit {
   @Input() staticWidth : number = 30;
   @Input() compact : boolean = false;
 
+  contact : Contact = new Contact;
+
   show : boolean = false;
   opened : boolean = true;
 
   ngOnInit() {
+    // this.contact = new Contact;
     console.log('starting');
+  }
+
+  onNotesClicked() {
+    console.log(this.contact);
   }
 }
